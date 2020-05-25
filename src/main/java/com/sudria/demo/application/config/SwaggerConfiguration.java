@@ -1,4 +1,4 @@
-package com.sudria.demo.config;
+package com.sudria.demo.application.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

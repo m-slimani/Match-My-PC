@@ -1,4 +1,4 @@
-package com.sudria.demo.config;
+package com.sudria.demo.application.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
