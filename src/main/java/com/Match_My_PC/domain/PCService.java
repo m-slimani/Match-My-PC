@@ -25,7 +25,7 @@ public class PCService {
   @Cacheable("pc")
   public PC getPC(Long id) throws NotFoundException {
     log.info("********************INSIDE THE PCERVICE********************");
-    return PCDao.findPC(id);
+    return pcDao.findPC(id);
   }
 
   public PC addPC(PC pc) {

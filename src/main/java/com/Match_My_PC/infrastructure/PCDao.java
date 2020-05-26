@@ -24,22 +24,22 @@ public class PCDao {
   }
 
   public PC findPC(Long id) throws NotFoundException {
-    return buildAnimal(match_my_pcRepository.findById(id).orElseThrow(NotFoundException::new));
+    return buildPC(match_my_pcRepository.findById(id).orElseThrow(NotFoundException::new));
   }
 
-  public PC createAnimals(PC pc) {
+  public PC createPC(PC pc) {
     return buildPC(match_my_pcRepository.save(buildEntity(pc)));
   }
 
-  public void deleteAnimals(Long id) {
+  public void deletePC(Long id) {
     match_my_pcRepository.delete(match_my_pcRepository.findById(id).get());
   }
 
-  public void updateAnimal(PC pc) {
+  public void updatePC(PC pc) {
     match_my_pcRepository.save(buildEntity(pc));
   }
 
-  public PC replaceAnimal(PC pc) {
+  public PC replacePC(PC pc) {
     return buildPC(match_my_pcRepository.save(buildEntity(pc)));
   }
 
@@ -53,7 +53,7 @@ public class PCDao {
         .build();
   }
 
-  private PC buildAnimal(PCEntity pcEntity) {
+  private PC buildPC(PCEntity pcEntity) {
     return PC.builder()
         .id(pcEntity.getId())
         .name(pcEntity.getName())
