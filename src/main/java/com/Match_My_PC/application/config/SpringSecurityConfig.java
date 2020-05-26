@@ -1,4 +1,4 @@
-package com.sudria.demo.application.config;
+package com.Match_My_PC.application.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

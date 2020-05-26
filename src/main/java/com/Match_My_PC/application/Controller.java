@@ -1,12 +1,12 @@
-package com.sudria.demo.application;
+package com.Match_My_PC.application;
 
+import com.Match_My_PC.domain.Animal;
+import com.Match_My_PC.domain.AnimalService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.fge.jsonpatch.JsonPatch;
 import com.github.fge.jsonpatch.JsonPatchException;
-import com.sudria.demo.domain.Animal;
-import com.sudria.demo.domain.AnimalService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;

@@ -1,6 +1,6 @@
-package com.sudria.demo.domain;
+package com.Match_My_PC.domain;
 
-import com.sudria.demo.infrastructure.AnimalDao;
+import com.Match_My_PC.infrastructure.AnimalDao;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;

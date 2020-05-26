@@ -1,4 +1,4 @@
-package com.sudria.demo.infrastructure;
+package com.Match_My_PC.infrastructure;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

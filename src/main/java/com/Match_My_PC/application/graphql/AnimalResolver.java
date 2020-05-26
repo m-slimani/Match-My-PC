@@ -1,4 +1,4 @@
-package com.sudria.demo.application.graphql;
+package com.Match_My_PC.application.graphql;
 
 import org.springframework.stereotype.Component;
 

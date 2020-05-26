@@ -1,7 +1,7 @@
-package com.sudria.demo;
+package com.Match_My_PC;
 
-import com.sudria.demo.infrastructure.AnimalEntity;
-import com.sudria.demo.infrastructure.ZooRepository;
+import com.Match_My_PC.infrastructure.AnimalEntity;
+import com.Match_My_PC.infrastructure.ZooRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

@@ -1,6 +1,7 @@
-package com.sudria.demo.infrastructure;
+package com.Match_My_PC.infrastructure;
 
-import com.sudria.demo.domain.Animal;
+import com.Match_My_PC.domain.Animal;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;

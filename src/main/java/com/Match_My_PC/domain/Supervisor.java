@@ -1,4 +1,4 @@
-package com.sudria.demo.domain;
+package com.Match_My_PC.domain;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

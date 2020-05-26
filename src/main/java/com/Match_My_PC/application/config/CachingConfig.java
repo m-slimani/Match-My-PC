@@ -1,4 +1,4 @@
-package com.sudria.demo.application.config;
+package com.Match_My_PC.application.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
