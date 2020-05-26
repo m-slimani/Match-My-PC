@@ -1,7 +1,7 @@
 package com.Match_My_PC.application;
 
-import com.Match_My_PC.domain.Animal;
-import com.Match_My_PC.domain.AnimalService;
+import com.Match_My_PC.domain.PC;
+import com.Match_My_PC.domain.PCService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,14 +23,14 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1")
-@Api(value = "afficher les animaux du zoo")
+@Api(value = "afficher les PC du catalogue")
 public class Controller {
 
-  private AnimalService animalService;
+  private PCService pcService;
   private ObjectMapper objectMapper;
 
-  public Controller(AnimalService animalService, ObjectMapper objectMapper) {
-    this.animalService = animalService;
+  public Controller(PCService pcService, ObjectMapper objectMapper) {
+    this.pcService = pcService;
     this.objectMapper = objectMapper;
   }
 
@@ -43,51 +43,51 @@ public class Controller {
 
 
 
-  @RequestMapping(value = "/animals", method = RequestMethod.GET)
-  public ResponseEntity<List<Animal>> getAnimals() {
-    return new ResponseEntity<>(animalService.getAnimals(), HttpStatus.OK);
+  @RequestMapping(value = "/pc", method = RequestMethod.GET)
+  public ResponseEntity<List<PC>> getPC() {
+    return new ResponseEntity<>(pcService.getPC(), HttpStatus.OK);
   }
 
-  @ApiOperation("donne la liste des animaux")
-  @RequestMapping(value = "/animals/{id}", method = RequestMethod.GET)
-  public ResponseEntity<Animal> getAnimalsById( @PathVariable(value = "id") Long id) {
+  @ApiOperation("donne la liste des PC")
+  @RequestMapping(value = "/pc/{id}", method = RequestMethod.GET)
+  public ResponseEntity<PC> getPCById(@PathVariable(value = "id") Long id) {
     try {
       log.info("********************INSIDE THE CONTROLLER********************");
-      return new ResponseEntity<>(animalService.getAnimals(id), HttpStatus.OK);
+      return new ResponseEntity<>(pcService.getPC(id), HttpStatus.OK);
     } catch (NotFoundException e) {
-      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Animal Not Found", e);
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "PC Not Found", e);
     }
   }
 
-  @RequestMapping(value = "/animals", method = RequestMethod.POST)
-  public ResponseEntity<Animal> createAnimals(
-      @RequestBody Animal animal) {
-    animal = animalService.addAnimal(animal);
-    return new ResponseEntity<>(animal, HttpStatus.CREATED);
+  @RequestMapping(value = "/pc", method = RequestMethod.POST)
+  public ResponseEntity<PC> createPC(
+      @RequestBody PC pc) {
+    pc = pcService.addPC(pc);
+    return new ResponseEntity<>(pc, HttpStatus.CREATED);
   }
 
-  @RequestMapping(value = "/animals/{id}", method = RequestMethod.PUT)
-  public ResponseEntity<Animal> replaceAnimals(
+  @RequestMapping(value = "/pc/{id}", method = RequestMethod.PUT)
+  public ResponseEntity<PC> replacePC(
       @PathVariable(value = "id") Long id,
-      @RequestBody Animal animal) {
-    animal.setId(id);
-    animalService.replaceAnimal(animal);
-    return new ResponseEntity<>(animal, HttpStatus.OK);
+      @RequestBody PC pc) {
+    pc.setId(id);
+    pcService.replacePC(pc);
+    return new ResponseEntity<>(pc, HttpStatus.OK);
   }
 
 
-  @RequestMapping(value = "/animals/{id}", method = RequestMethod.DELETE)
-  public ResponseEntity<Animal> deleteAnimals(@PathVariable(value = "id") Long id) {
-    animalService.deleteAnimals(id);
+  @RequestMapping(value = "/pc/{id}", method = RequestMethod.DELETE)
+  public ResponseEntity<PC> deletePC(@PathVariable(value = "id") Long id) {
+    pcService.deletePC(id);
     return new ResponseEntity<>(HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/animals/{id}", method = RequestMethod.PATCH, consumes = "application/json-patch+json")
-  public ResponseEntity<String> patchAnimals(
+  @RequestMapping(value = "/pc/{id}", method = RequestMethod.PATCH, consumes = "application/json-patch+json")
+  public ResponseEntity<String> patchPC(
       @PathVariable(value = "id") Long id,
       @RequestBody JsonPatch patch)  {
     try {
-      animalService.patchAnimals(applyPatchToCustomer(patch, animalService.findAnimal(id)));
+      pcService.patchPC(applyPatchToCustomer(patch, pcService.findPC(id)));
       return new ResponseEntity<>(HttpStatus.OK);
     } catch (NotFoundException e) {
       return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -96,9 +96,9 @@ public class Controller {
     }
   }
 
-  private Animal applyPatchToCustomer(JsonPatch patch, Animal targetAnimal)
+  private PC applyPatchToCustomer(JsonPatch patch, PC targetPC)
       throws JsonPatchException, JsonProcessingException {
-    JsonNode patched = patch.apply(objectMapper.convertValue(targetAnimal, JsonNode.class));
-    return objectMapper.treeToValue(patched, Animal.class);
+    JsonNode patched = patch.apply(objectMapper.convertValue(targetPC, JsonNode.class));
+    return objectMapper.treeToValue(patched, PC.class);
   }
 }

@@ -1,7 +1,7 @@
 package com.Match_My_PC;
 
-import com.Match_My_PC.infrastructure.AnimalEntity;
-import com.Match_My_PC.infrastructure.ZooRepository;
+import com.Match_My_PC.infrastructure.Match_My_PCRepository;
+import com.Match_My_PC.infrastructure.PCEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,10 +15,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class DemoApplication implements CommandLineRunner {
 
   @Autowired
-  private ZooRepository zooRepository;
+  private Match_My_PCRepository match_my_pcRepository;
 
-  public DemoApplication(ZooRepository zooRepository) {
-    this.zooRepository = zooRepository;
+  public DemoApplication(Match_My_PCRepository match_my_pcRepository) {
+    this.match_my_pcRepository = match_my_pcRepository;
   }
 
   public static void main(String[] args) {
@@ -31,13 +31,13 @@ public class DemoApplication implements CommandLineRunner {
   public void run(String... args) {
 
     log.info("Data initilisation...");
-    saveAnimal(1L, "Garfield", 5, "FELINE");
-    saveAnimal(2L, "Nemo", 1, "FISCH");
+    savePC(1L, "Garfield", 5, "FELINE");
+    savePC(2L, "Nemo", 1, "FISCH");
   }
 
-  private void saveAnimal(long id, String name, int age, String category) {
-    this.zooRepository.save(
-        AnimalEntity
+  private void savePC(long id, String name, int age, String category) {
+    this.match_my_pcRepository.save(
+        PCEntity
             .builder()
             .id(id)
             .name(name)

@@ -15,7 +15,7 @@ import lombok.ToString;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Animal {
+public class PC {
 
   private Long id;
   private String name;

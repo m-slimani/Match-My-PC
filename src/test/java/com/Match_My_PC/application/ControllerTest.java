@@ -1,7 +1,5 @@
 package com.Match_My_PC.application;
 
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +9,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -29,10 +30,10 @@ public class ControllerTest {
   }
 
   @Test
-  public void getAnimals() throws Exception {
+  public void getPC() throws Exception {
 
     this.mockMvc
-        .perform(MockMvcRequestBuilders.get("/animals"))
+        .perform(MockMvcRequestBuilders.get("/pc"))
         .andDo(MockMvcResultHandlers.print())
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers
