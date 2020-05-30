@@ -44,8 +44,7 @@ public class Controller {
 
 
   @RequestMapping(value = "/pc", method = RequestMethod.GET)
-  public ResponseEntity<List<PC>> getPC() {
-    return new ResponseEntity<>(pcService.getPC(), HttpStatus.OK);
+  public ResponseEntity<List<PC>> getPC() { return new ResponseEntity<>(pcService.getPC(), HttpStatus.OK);
   }
 
   @ApiOperation("donne la liste des PC")

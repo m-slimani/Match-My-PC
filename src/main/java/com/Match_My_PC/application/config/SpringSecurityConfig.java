@@ -19,7 +19,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("user").password("{noop}password").roles("USER")
                 .and()
                 .withUser("admin").password("{noop}password").roles("USER", "ADMIN");
-    }
+     }
 
 
     // Secure the endpoins with HTTP Basic authentication
