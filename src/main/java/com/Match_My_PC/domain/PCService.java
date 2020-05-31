@@ -18,30 +18,30 @@ public class PCService {
     this.pcDao = pcDao;
   }
 
-  public List<PC> getPC() {
-    return pcDao.findPC();
+  public List<PC> getPCS() {
+    return pcDao.findPCS();
   }
 
   @Cacheable("pc")
-  public PC getPC(Long id) throws NotFoundException {
+  public PC getPCS(Long id) throws NotFoundException {
     log.info("********************INSIDE THE PCERVICE********************");
-    return pcDao.findPC(id);
+    return pcDao.findPCS(id);
   }
 
   public PC addPC(PC pc) {
-    return pcDao.createPC(pc);
+    return pcDao.createPCS(pc);
   }
 
-  public void deletePC(Long id) {
-    pcDao.deletePC(id);
+  public void deletePCS(Long id) {
+    pcDao.deletePCS(id);
   }
 
-  public void patchPC(PC pc) {
+  public void patchPCS(PC pc) {
     pcDao.updatePC(pc);
   }
 
   public PC findPC(Long id) throws NotFoundException {
-    return pcDao.findPC(id);
+    return pcDao.findPCS(id);
   }
 
   public PC replacePC(PC pc) {

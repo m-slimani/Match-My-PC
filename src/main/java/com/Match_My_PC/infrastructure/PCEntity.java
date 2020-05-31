@@ -19,10 +19,10 @@ public class PCEntity {
   @Id
   @GeneratedValue
   private Long id;
-  @Column(name = "NAME", length = 50, nullable = false)
-  private String name;
-  @Column(name = "AGE", nullable = false)
-  private int age;
+  @Column(name = "MARQUE", length = 50, nullable = false)
+  private String marque;
+  @Column(name = "DATE_SORTIE", length = 10, nullable = false)
+  private String date_sortie;
   @Column(name = "CATEGORY", length = 50, nullable = false)
   private String category;
 }

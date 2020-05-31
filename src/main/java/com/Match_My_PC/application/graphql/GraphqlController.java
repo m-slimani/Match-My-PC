@@ -10,7 +10,6 @@ import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
@@ -26,7 +25,7 @@ public class GraphqlController {
     //Approche code first (le schéma est généré après le code)
     public GraphqlController(PCResolver pcResolver) {
         GraphQLSchema schema = new GraphQLSchemaGenerator()
-//        .withBasePackages("com.sudria.demo.graphql")
+//        .withBasePackages("com.match_my_pc.graphql")
                 .withOperationsFromSingletons(pcResolver)
                 .generate();
         graphQL = GraphQL.newGraphQL(schema).build();

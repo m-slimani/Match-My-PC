@@ -17,21 +17,21 @@ public class PCDao {
     this.match_my_pcRepository = match_my_pcRepository;
   }
 
-  public List<PC> findPC() {
+  public List<PC> findPCS() {
     return StreamSupport.stream(match_my_pcRepository.findAll().spliterator(), false)
         .map(pcEntitie -> buildPC(pcEntitie))
         .collect(Collectors.toList());
   }
 
-  public PC findPC(Long id) throws NotFoundException {
+  public PC findPCS(Long id) throws NotFoundException {
     return buildPC(match_my_pcRepository.findById(id).orElseThrow(NotFoundException::new));
   }
 
-  public PC createPC(PC pc) {
+  public PC createPCS(PC pc) {
     return buildPC(match_my_pcRepository.save(buildEntity(pc)));
   }
 
-  public void deletePC(Long id) {
+  public void deletePCS(Long id) {
     match_my_pcRepository.delete(match_my_pcRepository.findById(id).get());
   }
 
@@ -47,8 +47,8 @@ public class PCDao {
     return PCEntity
         .builder()
         .id(pc.getId())
-        .name(pc.getName())
-        .age(pc.getAge())
+        .marque(pc.getMarque())
+        .date_sortie(pc.getDate_sortie())
         .category(pc.getCategory())
         .build();
   }
@@ -56,8 +56,8 @@ public class PCDao {
   private PC buildPC(PCEntity pcEntity) {
     return PC.builder()
         .id(pcEntity.getId())
-        .name(pcEntity.getName())
-        .age(pcEntity.getAge())
+        .marque(pcEntity.getMarque())
+        .date_sortie(pcEntity.getDate_sortie())
         .category(pcEntity.getCategory())
         .build();
   }

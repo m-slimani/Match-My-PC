@@ -31,17 +31,17 @@ public class DemoApplication implements CommandLineRunner {
   public void run(String... args) {
 
     log.info("Data initilisation...");
-    savePC(1L, "Garfield", 5, "FELINE");
-    savePC(2L, "Nemo", 1, "FISCH");
+    savePC(1L, "ASUS", "12/05/2019", "Ordinateur");
+    savePC(2L, "MAC", "23/12/2018", "Ordinateur");
   }
 
-  private void savePC(long id, String name, int age, String category) {
+  private void savePC(long id, String marque, String date_sortie, String category) {
     this.match_my_pcRepository.save(
         PCEntity
             .builder()
             .id(id)
-            .name(name)
-            .age(age)
+            .marque(marque)
+            .date_sortie(date_sortie)
             .category(category)
             .build());
   }

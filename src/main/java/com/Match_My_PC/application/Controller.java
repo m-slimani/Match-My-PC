@@ -23,7 +23,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1")
-@Api(value = "afficher les PC du catalogue")
+@Api(value = "afficher les PCS du catalogue")
 public class Controller {
 
   private PCService pcService;
@@ -43,30 +43,31 @@ public class Controller {
 
 
 
-  @RequestMapping(value = "/pc", method = RequestMethod.GET)
-  public ResponseEntity<List<PC>> getPC() { return new ResponseEntity<>(pcService.getPC(), HttpStatus.OK);
+  @RequestMapping(value = "/pcs", method = RequestMethod.GET)
+  public ResponseEntity<List<PC>> getPCS() {
+    return new ResponseEntity<>(pcService.getPCS(), HttpStatus.OK);
   }
 
-  @ApiOperation("donne la liste des PC")
-  @RequestMapping(value = "/pc/{id}", method = RequestMethod.GET)
-  public ResponseEntity<PC> getPCById(@PathVariable(value = "id") Long id) {
+  @ApiOperation("donne la liste des PCS")
+  @RequestMapping(value = "/pcs/{id}", method = RequestMethod.GET)
+  public ResponseEntity<PC> getPCSById(@PathVariable(value = "id") Long id) {
     try {
       log.info("********************INSIDE THE CONTROLLER********************");
-      return new ResponseEntity<>(pcService.getPC(id), HttpStatus.OK);
+      return new ResponseEntity<>(pcService.getPCS(id), HttpStatus.OK);
     } catch (NotFoundException e) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "PC Not Found", e);
     }
   }
 
-  @RequestMapping(value = "/pc", method = RequestMethod.POST)
-  public ResponseEntity<PC> createPC(
+  @RequestMapping(value = "/pcs", method = RequestMethod.POST)
+  public ResponseEntity<PC> createPCS(
       @RequestBody PC pc) {
     pc = pcService.addPC(pc);
     return new ResponseEntity<>(pc, HttpStatus.CREATED);
   }
 
-  @RequestMapping(value = "/pc/{id}", method = RequestMethod.PUT)
-  public ResponseEntity<PC> replacePC(
+  @RequestMapping(value = "/pcs/{id}", method = RequestMethod.PUT)
+  public ResponseEntity<PC> replacePCS(
       @PathVariable(value = "id") Long id,
       @RequestBody PC pc) {
     pc.setId(id);
@@ -75,18 +76,18 @@ public class Controller {
   }
 
 
-  @RequestMapping(value = "/pc/{id}", method = RequestMethod.DELETE)
-  public ResponseEntity<PC> deletePC(@PathVariable(value = "id") Long id) {
-    pcService.deletePC(id);
+  @RequestMapping(value = "/pcs/{id}", method = RequestMethod.DELETE)
+  public ResponseEntity<PC> deletePCS(@PathVariable(value = "id") Long id) {
+    pcService.deletePCS(id);
     return new ResponseEntity<>(HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/pc/{id}", method = RequestMethod.PATCH, consumes = "application/json-patch+json")
-  public ResponseEntity<String> patchPC(
+  @RequestMapping(value = "/pcs/{id}", method = RequestMethod.PATCH, consumes = "application/json-patch+json")
+  public ResponseEntity<String> patchPCS(
       @PathVariable(value = "id") Long id,
       @RequestBody JsonPatch patch)  {
     try {
-      pcService.patchPC(applyPatchToCustomer(patch, pcService.findPC(id)));
+      pcService.patchPCS(applyPatchToCustomer(patch, pcService.findPC(id)));
       return new ResponseEntity<>(HttpStatus.OK);
     } catch (NotFoundException e) {
       return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);

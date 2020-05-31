@@ -18,8 +18,8 @@ import lombok.ToString;
 public class PC {
 
   private Long id;
-  private String name;
-  private int age;
+  private String marque;
+  private String date_sortie;
   private String category;
 
 }

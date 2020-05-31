@@ -18,7 +18,7 @@ public class PCResolver {
     }
 
     @GraphQLQuery
-    public List<PC> getPC (){
-        return pcService.getPC();
+    public List<PC> getPCS (){
+        return pcService.getPCS();
     }
 }

@@ -17,7 +17,7 @@ public class CachingConfig {
 
     @Bean
     public CacheManager cacheManager() {
-        return new ConcurrentMapCacheManager("pc");
+        return new ConcurrentMapCacheManager("pcs");
     }
 
     public void evictAllCaches() {
