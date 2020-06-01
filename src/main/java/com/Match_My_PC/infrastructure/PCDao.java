@@ -13,7 +13,7 @@ public class PCDao {
 
   private Match_My_PCRepository match_my_pcRepository;
 
-  public PCDao(Match_My_PCRepository match_my_pcRepositoryRepository) {
+  public PCDao(Match_My_PCRepository match_my_pcRepository) {
     this.match_my_pcRepository = match_my_pcRepository;
   }
 
