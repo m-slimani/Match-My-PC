@@ -1,0 +1,9 @@
+renommer DemoApplication.java
+en java le nom du package ne doit pas contenir de majuscules : Match_My_PCet non plus des undercores
+la méthode "/pcs/{id}" ne renvoie pas une liste. cette annotation est erronée:
+  @ApiOperation("donne la liste des PCS")
+  @RequestMapping(value = "/pcs/{id}", method = RequestMethod.GET)
+le cache configuré est "pcs", celui utilisé dans le service "pc" => ne fonctionne pas
+supprimer la classe Supervisor.java
+que fait la classe Match_My_PCRepository.java ?
+les noms de classes en java ne portent pas d'underscores : Match_My_PCRepository.java
